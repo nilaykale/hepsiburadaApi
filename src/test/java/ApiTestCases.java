@@ -31,17 +31,17 @@ public class ApiTestCases {
     void CheckAllGroceryData() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
-        Root expected = mapper.readValue(new File("src/data/AllProducts.json"), Root.class);
+        AllGroceryResult expected = mapper.readValue(new File("src/data/AllProducts.json"), AllGroceryResult.class);
 
-        Root response = given()
+        AllGroceryResult response = given()
                 .when()
                 .get("https://a19b4e32-1267-44ab-a421-186ff6b27cd5.mock.pstmn.io/allGrocery")
-                .as(Root.class);
+                .as(AllGroceryResult.class);
 
         Assert.assertEquals(expected.data.size(), response.data.size(), "Actual item number and response's item number are not the same.");
         for (int i = 0; i < expected.data.size(); i++) {
-            Grocery expectedItem = expected.data.get(i);
-            Grocery actualItem = response.data.get(i);
+            JsonKeys expectedItem = expected.data.get(i);
+            JsonKeys actualItem = response.data.get(i);
 
             Assert.assertEquals(expectedItem.getId(), actualItem.getId(), "Id number are not equal");
             Assert.assertEquals(expectedItem.getName(), actualItem.getName(), "Item names are not equal");
@@ -54,17 +54,17 @@ public class ApiTestCases {
     void CheckAppleData() throws IOException {
             ObjectMapper mapper = new ObjectMapper();
 
-            Root expected = mapper.readValue(new File("src/data/Apple.json"), Root.class);
+            AllGroceryResult expected = mapper.readValue(new File("src/data/Apple.json"), AllGroceryResult.class);
 
-            Root response = given()
+            AllGroceryResult response = given()
                     .when()
                     .get("https://a19b4e32-1267-44ab-a421-186ff6b27cd5.mock.pstmn.io/allGrocery/apple")
-                    .as(Root.class);
+                    .as(AllGroceryResult.class);
 
             Assert.assertEquals(expected.data.size(), response.data.size(), "Actual item number and response's item number are not the same.");
             for (int i = 0; i < expected.data.size(); i++) {
-                Grocery expectedItem = expected.data.get(i);
-                Grocery actualItem = response.data.get(i);
+                JsonKeys expectedItem = expected.data.get(i);
+                JsonKeys actualItem = response.data.get(i);
 
                 Assert.assertEquals(expectedItem.getId(), actualItem.getId(), "Id number are not equal");
                 Assert.assertEquals(expectedItem.getName(), actualItem.getName(), "Item names are not equal");
@@ -77,17 +77,17 @@ public class ApiTestCases {
     void CheckGrapesData()throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 
-        Root expected = mapper.readValue(new File("src/data/Grapes.json"), Root.class);
+        AllGroceryResult expected = mapper.readValue(new File("src/data/Grapes.json"), AllGroceryResult.class);
 
-        Root response = given()
+        AllGroceryResult response = given()
                 .when()
                 .get("https://a19b4e32-1267-44ab-a421-186ff6b27cd5.mock.pstmn.io/allGrocery/grapes")
-                .as(Root.class);
+                .as(AllGroceryResult.class);
 
         Assert.assertEquals(expected.data.size(), response.data.size(), "Actual item number and response's item number are not the same.");
         for (int i = 0; i < expected.data.size(); i++) {
-            Grocery expectedItem = expected.data.get(i);
-            Grocery actualItem = response.data.get(i);
+            JsonKeys expectedItem = expected.data.get(i);
+            JsonKeys actualItem = response.data.get(i);
 
             Assert.assertEquals(expectedItem.getId(), actualItem.getId(), "Id number are not equal");
             Assert.assertEquals(expectedItem.getName(), actualItem.getName(), "Item names are not equal");

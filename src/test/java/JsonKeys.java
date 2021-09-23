@@ -1,4 +1,4 @@
-public class Grocery {
+public class JsonKeys {
     private int id;
     private  String name;
     private int price;
